@@ -17,8 +17,8 @@ blinky  = [
 
 def faces_to_binary(face):
     output = "$$$F"
-    for y in range(9):
-        for x in range(14):
+    for x in range(14):
+        for y in range(9):
             output+='1' if (face[y][x]=='#') else '0'
     return output+"\r"
 
