@@ -49,7 +49,9 @@ class PiLiteBoard(object):
         sleep(3)
         self.ser.write("$$$ALL,OFF\r")
         self.ser.write(faces_to_binary(blink))
-
+        sleep(3)
+        self.ser.write("$$$ALL,OFF\r")
+        self.ser.write(faces_to_binary(stare))
 
 def main():
     pi = PiLiteBoard()
