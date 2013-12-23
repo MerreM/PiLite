@@ -15,7 +15,7 @@ class PiLiteBoard(object):
     def blinky(self):
         self.ser.write("$$$T1,1,o\r")
         self.ser.write("$$$T5,1,_\r")
-        self.ser.write("$$$T5,1,O\r")
+        self.ser.write("$$$T11,1,O\r")
 
 
 def main():
