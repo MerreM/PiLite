@@ -12,14 +12,15 @@ class PiLiteBoard(object):
             self.ser.write(text[:14])
             text = text[14:]
             sleep(3)
-    def pacman(self):
-        self.ser.write("$$$T1,1,Z\r")
+    def blinky(self):
+        self.ser.write("$$$T1,1,o\r")
         self.ser.write("$$$T5,1,_\r")
+        self.ser.write("$$$T5,1,O\r")
 
 
 def main():
     pi = PiLiteBoard()
-    pi.pacman()
+    pi.blinky()
 
 if __name__ == "__main__":
     main()
