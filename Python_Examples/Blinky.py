@@ -1,6 +1,8 @@
 import serial
 from time import sleep
 
+lolLED = []
+
 class PiLiteBoard(object):
     def __init__(self):
         self.ser = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=3.0)
