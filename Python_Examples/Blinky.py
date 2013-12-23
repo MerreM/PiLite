@@ -13,7 +13,8 @@ class PiLiteBoard(object):
             text = text[14:]
             sleep(3)
     def pacman(self):
-        self.ser.write("$$$T1,1.Z\r")
+        self.ser.write("$$$T1,1,Z\r")
+        self.ser.write("$$$T5,1,_\r")
 
 
 def main():
