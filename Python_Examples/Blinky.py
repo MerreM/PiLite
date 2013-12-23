@@ -38,6 +38,7 @@ class PiLiteBoard(object):
         self.ser = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=3.0)
         self.ser.write("$$$SPEED50\r")
         self.ser.write("$$$ALL,OFF\r")
+        self.state = "OFF"
     def write(self, text):
         text = text.encode('utf-8')
         while text:
@@ -45,8 +46,10 @@ class PiLiteBoard(object):
             text = text[14:]
             sleep(3)
     def stare(self):
-        self.ser.write("$$$ALL,OFF\r")
-        self.ser.write(faces_to_binary(stare))
+        if not self.state == "stare":
+            self.ser.write("$$$ALL,OFF\r")
+            self.ser.write(faces_to_binary(stare))
+        self.state = "stare"
     def blink(self):
         self.ser.write("$$$ALL,OFF\r")
         self.ser.write(faces_to_binary(blink))
