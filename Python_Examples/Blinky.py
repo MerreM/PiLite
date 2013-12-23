@@ -1,4 +1,5 @@
 import serial
+from time import sleep
 
 class PiLiteBoard(object):
     def __init__(self):
