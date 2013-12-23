@@ -47,16 +47,17 @@ class PiLiteBoard(object):
     def stare(self):
         self.ser.write("$$$ALL,OFF\r")
         self.ser.write(faces_to_binary(stare))
-    def blinky(self):
-        self.stare()
-        sleep(3)
-        self.blink()
     def blink(self):
         self.ser.write("$$$ALL,OFF\r")
         self.ser.write(faces_to_binary(blink))
         sleep(0.5)
         self.ser.write("$$$ALL,OFF\r")
         self.ser.write(faces_to_binary(stare))
+    def blinky(self):
+        while True:
+            self.stare()
+            sleep(3)
+            self.blink()
 
 def main():
     pi = PiLiteBoard()
