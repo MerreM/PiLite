@@ -1,7 +1,27 @@
 import serial
 from time import sleep
 
-lolLED = []
+blinky  = [
+[' ',' ',' ',' ',' ',' ',' ',' ',' ','#','#','#',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ','#',' ',' ',' ','#',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ','#',' ',' ',' ','#',' '],
+[' ','#','#',' ',' ',' ',' ',' ','#',' ',' ',' ','#',' '],
+['#',' ',' ','#',' ',' ',' ',' ','#',' ',' ',' ','#',' '],
+['#',' ',' ','#',' ',' ',' ',' ','#',' ',' ',' ','#',' '],
+['#',' ',' ','#',' ',' ',' ',' ','#',' ',' ',' ','#',' '],
+[' ','#','#',' ','#','#','#','#',' ','#','#','#',' ',' '],
+[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+]
+
+
+
+def faces_to_binary(face):
+    output = "$$$F"
+    for y in range(9):
+        for x in range(14):
+            output+='1' if (face[y][x]=='#') else '0'
+    return output+"\r"
+
 
 class PiLiteBoard(object):
     def __init__(self):
@@ -15,9 +35,7 @@ class PiLiteBoard(object):
             text = text[14:]
             sleep(3)
     def blinky(self):
-        self.ser.write("$$$T1,1,O\r")
-        self.ser.write("$$$T7,1,_\r")
-        self.ser.write("$$$Ta,1,o\r")
+        self.ser.write(faces_to_binary(blinky))
 
 
 def main():
